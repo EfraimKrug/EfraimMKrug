@@ -1,0 +1,121 @@
+<html>
+<head>
+	<title>Shvatim...</title>
+<link rel="stylesheet" href="css/shvatim.css" />
+<script src="js/shvatim.js"></script>
+</head>
+
+<body>
+<style>
+#startingInstructions {
+	position:absolute;
+	height: 546px;
+	width: 453px;
+	left: 128px;
+	top: 48px;
+	font-size: 21px;
+	color: black;
+	background: cyan;
+	padding: 10px;
+	}
+#startingInstructionsShadow {
+	position:absolute;
+	height: 546px;
+	width: 453px;
+	left: 138px;
+	top: 58px;
+	font-size: 21px;
+	color: black;
+	background: grey;
+	padding: 10px;
+	}
+
+</style>
+
+<div id="wholeThing">
+<div class="instruct" id="instruct">Imagine, the tribes...</div>
+<div id="finished" onclick="finished()">Finished? Click here!</div>
+<div id="gameResults">Results</div>
+<div class="card" id="Reuven"><div class="insideCard">R'euven</div></div>
+<div class="card" id="Shimon"><div class="insideCard">Shimon</div></div>
+<div class="card" id="Levi">
+			<div class="insideCard">
+			<div id="ltop">Levi</div>
+			<div id="lbottom1">&nbsp;</div>			
+			<div id="lbottom2">&nbsp;</div>			
+			<div id="lbottom3">&nbsp;</div>			
+			</div>
+</div>
+<div class="card" id="Yehudah"><div class="insideCard">Yehudah</div></div>
+<div class="card" id="Dan"><div class="insideCard">Dan</div></div>
+<div class="card" id="Naftali"><div class="insideCard">Naftali</div></div>
+<div class="card" id="Gad"><div class="insideCard">Gad</div></div>
+<div class="card" id="Asher"><div class="insideCard">Asher</div></div>
+
+<div class="card" id="Yissachar"><div class="insideCard">Yissachar</div></div>
+<div class="card" id="Zevulun"><div class="insideCard">
+			<div id="ztop">Zevulun</div>
+			<div id="zbottom">&nbsp;</div>
+			<div id="zbottom1">&nbsp;</div>
+			<div id="zbottom2">&nbsp;</div>
+			<div id="zbottom3">&nbsp;</div>
+</div></div>
+<div class="card" id="Yosef"><div class="insideCard">Yosef</div></div>
+<div class="card" id="Binyamin"><div class="insideCard">
+			<div id="btop">Binyamin</div>
+			<div id="bbottom1">&nbsp;</div>
+			<div id="bbottom2">&nbsp;</div>
+			<div id="bbottom3">&nbsp;</div>
+			<div id="bbottom4">&nbsp;</div>
+			<div id="bbottom5">&nbsp;</div>
+			<div id="bbottom6">&nbsp;</div>
+			<div id="bbottom7">&nbsp;</div>
+			<div id="bbottom8">&nbsp;</div>
+			<div id="bbottom9">
+				<div id="bbottom9a">&nbsp;</div><div id="bbottom9b">&nbsp;</div>
+			</div>
+			<div id="bbottom10">&nbsp;</div>
+</div></div>
+
+<div id="control">
+<div class="controli" id="command01" onclick="stackDeck();" onmouseover="writeDirections('stack');">Stack</div>
+<div class="controli" id="command02" onclick="shuffleDeck();"  onmouseover="writeDirections('shuffle')";>Shuffle</div>
+<div class="controli" id="command03" onclick="dealDeck();" onmouseover="writeDirections('deal');">Deal</div>
+<div class="controli" id="command04" onclick="fanDeck();" onmouseover="writeDirections('fan');">Fan Deck</div>
+<div class="controli" id="command05" onclick="stackDeck();rainbowDeck();" onmouseover="writeDirections('rainbow');">Rainbow</div>
+<div class="controli" id="command06" onclick="setupMother(LeahOrder);" onmouseover="flashDirections('leah');" >Leah's</div>
+<div class="controli" id="command07" onclick="setupMother(RachelOrder);" onmouseover="flashDirections('rachel');">Rachel's</div>
+<div class="controli" id="command08" onclick="setupMother(BilhahOrder);" onmouseover="flashDirections('bilhah');">Bilhah's</div>
+<div class="controli" id="command09" onclick="setupMother(ZilpahOrder);" onmouseover="flashDirections('zilpah');">Zilpah's</div>
+</div> <!-- end controol -->
+</div> <!-- end wholeThing -->
+<div id="startingInstructionsShadow">&nbsp;</div>
+<div id="startingInstructions" onclick="go();">
+<h4>The Game</h4>
+There are 4 mothers, and 12 children cards. The goal is to assign the children
+to each mother in the correct order. <br><br>
+The menu at the bottom allows you to do stuff to the cards - like  shuffle, 
+deal, stack, and fan in various ways. <br><br>
+To play, click on the mother you want to try playing. Then click on each of
+her children in order. When you think you have all the children in place, click
+on the 'finished' button.<br><br>
+This game was suggested to me by Rabbi Joshua Zuber in Boston.<br><br>
+<i>Click this panel to start</i>
+</div>
+
+<script>
+function go(){
+	document.getElementById("startingInstructions").style.height = 0;
+	document.getElementById("startingInstructions").style.width = 0;
+	document.getElementById("startingInstructions").style.border = "0px";
+	document.getElementById("startingInstructions").style.left = -100;
+	document.getElementById("startingInstructions").innerHTML = "";
+	document.getElementById("startingInstructionsShadow").style.height = 0;
+	document.getElementById("startingInstructionsShadow").style.width = 0;
+	document.getElementById("startingInstructionsShadow").style.left = -100;
+	document.getElementById("startingInstructionsShadow").style.border = "0px";
+
+	startGame();
+	}
+</script>
+</html>

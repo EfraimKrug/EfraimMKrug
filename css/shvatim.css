@@ -1,0 +1,222 @@
+/**
+ * CSS for the tribe cards
+ **/
+#Reuven {
+	background-color: red;
+	}
+#Dan {
+	background-color: cyan;
+	}
+#Naftali {
+	background-color: purple;
+	}
+#Shimon {
+	background-color: green;
+	}
+#Gad {
+	background-color: grey;
+	}
+#Levi {
+	background-color: black;
+	color: white;
+	}
+#ltop {
+	background-color: black;
+	color: white;
+	}
+#lbottom1 {
+	background-color: red;
+	}
+#lbottom2 {
+	background-color: black;
+	}
+#lbottom3 {
+	background-color: red;
+	}
+#Yehudah {
+	background-color: lightblue;
+	}
+#Asher {
+	background-color: ivory;
+	}
+#Yosef {
+	background-color: black;
+	color: white;
+	}
+#Zevulun {
+	background-color: white;
+	}
+#ztop {
+	background-color: green;
+	}
+#zbottom {
+	background-color: blue;
+	}
+#zbottom1 {
+	background-color: red;
+	}
+#zbottom2 {
+	background-color: purple;
+	}
+#zbottom3 {
+	background-color: yellow;
+	}
+#Yissachar {
+	background-color: blue;
+	}
+#Binyamin {
+	background-color: blue;
+	}
+#btop {
+	background-color: black;
+	color: white;
+	height: 12px;
+	}
+#bbottom1 {
+	background-color: red;
+	height: 12px;
+	}
+#bbottom2 {
+	background-color: black;
+	height: 12px;
+	}
+#bbottom3 {
+	background-color: blue;
+	height: 12px;
+	}
+#bbottom4 {
+	background-color: green;
+	height: 12px;
+	}
+#bbottom5 {
+	background-color: lightblue;
+	height: 12px;
+	}
+#bbottom6 {
+	background-color: cyan;
+	height: 12px;
+	}
+#bbottom7 {
+	background-color: red;
+	height: 12px;
+	}
+#bbottom8 {
+	background-color: ivory;
+	height: 12px;
+	}
+#bbottom9 {
+	height: 12px
+	background-color: black;
+	border: 0px solid black;
+	align: inline;
+	}
+#bbottom9a {
+	background-color: red;
+	height: 6px;
+	align: inline;
+	}
+#bbottom9b {
+	background-color: black;
+	height: 6px;
+	align: inline;
+	}
+#bbottom10 {
+	background-color: purple;
+	height: 12px;
+	}
+
+/**
+ * CSS for the card manipulation
+ **/ 
+.insideCard {
+	border: 4px solid black;
+	padding: 5px;
+	}
+.card {
+	position:absolute;
+	width: 135px;
+	height: 145px;
+	background-color: yellow;
+	border: 4px solid red;
+	top: 10px;
+	left: 251px;
+	color: black;
+	font-weight: bold;
+	font-size: 21px;
+	text-align: center;
+	padding: 2px;
+	}	
+/**
+ * CSS for different parts of the screen
+ **/
+
+/* whole screen... */ 
+#wholeThing {
+	width: 935px;
+	height: 939px;
+	border: 4px solid red;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	}
+
+/* instruction box on top */
+#instruct {
+	font-weight: bold;
+	height: 39px;
+	width: 528px;
+	border: 4px solid white;
+	font-size: 25px;
+	color: red;
+	}
+
+/* button - whole frame */
+#control {
+	position:absolute;
+	width: 135px;
+	height: 219px;
+	border: 4px solid yellow;
+	top: 435px;
+	left: 48px;
+	text-align:center;
+	}
+
+/* individual buttons */
+.controli {
+	position:relative;
+	width: 132px;
+	height:22px;
+	border:2px solid grey;
+	background-color: pink;
+	text-align:center;
+	}
+
+/* the 'did I do it?' button */
+#finished {
+	position:absolute;
+	width: 135px;
+	height: 39px;
+	border: 2px solid white;
+	background-color: grey;
+	color: red;
+	top: 375px;
+	left: 648px;
+	text-align:center;
+	font-weight: bold;
+	padding: 15px;
+	}
+
+/* the results response */
+#gameResults {
+	position:absolute;
+	width: 135px;
+	height: 39px;
+	border: 2px solid white;
+	background-color: grey;
+	color: red;
+	top: 475px;
+	left: 648px;
+	text-align:center;
+	font-weight: bold;
+	padding: 15px;
+	}	

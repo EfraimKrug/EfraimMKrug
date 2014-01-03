@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Welcome to PHP: Prestigious HTML Preprocessor</title>
+  <link rel="stylesheet" href="./css/foundation.min.css">
+  <link rel="stylesheet" href="./css/app.css">
+
+  <script src="./js/modernizr.foundation.js"></script>
+  <script src="./js/fireAJAX.js"></script>
+<style>
+.tabs dd.active {
+	border-top: 3px solid red;
+	border-right: 2px solid red;
+	border-left: 2px solid black;
+	}
+.tabs-content li.active {
+	border-top: 1px solid red;
+	border-right: 2px solid red;
+	border-left: 2px solid black;
+	padding-left: 10px;
+	}
+.emkbox {
+	border: 0px solid red;
+	height: 0px;
+	padding: 5px;
+	}
+#commentOn {
+	font-size: 15px;
+	border: 0px solid red;
+	color: red;
+	padding: 10px;
+	}
+#lastRow {
+	height: 497px;
+	font-size: 15px;
+	border: 2px solid cyan;
+	color: black;
+	padding: 10px;
+	}
+#TabsComment {
+	position: absolute;
+	height: 365px;
+	width: 248px;
+	border: 4px solid blue;
+	color: black;
+	padding: 10px;
+	font: 12px;
+	background-color: cyan
+	left: -128px;
+	top: -828px;
+	}
+</style>
+<script>
+function displayCommentary(num){
+	var x = document.getElementById("commentary");
+	if (num == 1){
+		x.innerHTML = "This form is going to open up another page listing whatever you want from ebay...";
+		x.style.border = "2px solid red";
+		x.style.height = "77px";
+		}
+	}
+function closeCommentary(){
+	var x = document.getElementById("commentary");
+	x.style.height = "0px";
+	x.style.border = "0px solid red";
+	x.innerHTML = "";
+	}
+function commentOn(num){
+	var x = document.getElementById("commentOn");
+	x.style.border = "1px solid red";
+	if(num == 1){
+		x.innerHTML = "This could have been me, just a few years ago! Juggling on a slack rope...";
+	} else if(num == 2){
+		x.innerHTML = "This could have been me, just a few years ago! Sailing a fireball - singlehanded, trapeze... I used to put up the spinnaker also... Awesome!";
+	} else if(num == 3){
+		x.innerHTML = "No. I don't do this. I sailed with a race car driver once. I jumped out of a plane once on static line... but nothing like this!";
+		}
+	}
+function commentOff(){
+	var x = document.getElementById("commentOn");
+	x.innerHTML = "";
+	x.style.border = "0px solid red";
+	}
+	
+function AJAXDeleteName(name){
+	var confirmation = window.confirm("You sure you want to delete '" + name + "'");
+	if(confirmation){
+		fireAJAX("AJAXComment02", "http://www.efraimmkrug.com/php/deletePerson.php?NAME=" + name);
+	}
+}
+
+function tabsComment(version){
+	var msg = "";
+	var x = document.getElementById("TabsComment");
+	x.style.left = "-198px";
+	x.style.top = "1196px";
+	x.style.border = "4px solid blue";
+	x.style.background = "cyan";
+
+	if(version == 1){
+		msg = "The following form allows you to enter a name and email address. This name and email address will be captured by a php form, and stored in a mysql database. This is exactly as if you entered the name and email address above when you did that brilliant ebay query! Wow, this Efraim must be good! Hire him, quick!";
+		x.style.height = "189px";
+	} else if (version == 2){
+		msg = "This tab allows you (presumeably the user/consumer/hiring manager?) to see a list of people who may (or may not) have used the ebay query form above. If they have not used the form, then they entered their name in the form (tab marked 'mySQL database stuff') take a look!<br>From here, you can click on a name and go to the third (and final) tab marked 'List of ebay Queries'! You'll like that, I'm sure!";
+		fireAJAX('AJAXTarget', 'http://www.efraimmkrug.com/php/getPeople.php');
+		x.style.height = "224px";
+		x.style.top = "1296px";
+	} else if (version == 3){
+		msg = "When you come here, you have one name and all the ebay queries associated with that name. What if you want to delete the name? Well, then, you have to click the name. No problem, really! When you click on the name, I kick off a (via javascript ajax) php script to first delete all the ebay queries associated with the name, and then I delete the name. I have to do that because I set the database up with a foreign key - from the BSearch table into the BPerson table. It's really pretty straight-forward!";
+		fireAJAX('AJAXTarget', 'http://www.efraimmkrug.com/php/getPeople.php');
+		x.style.height = "264px";
+		x.style.top = "1296px";
+	}
+	x.innerHTML = msg;
+	}
+function tabsCommentOut(){
+	var x = document.getElementById("TabsComment");
+	x.style.left = "-128px";
+	x.style.top = "-1196px";
+	x.style.border = "0px solid blue";
+	x.innerHTML = "";
+	}
+</script>
+</head>
+<body>
+
+  <div class="row">
+    <div class="twelve columns">
+      <h2>PHP - with some zurb foundation thrown in...</h2>
+      <p>This is version <strong>3.2.5</strong> generated on January 26, 2013.</p>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="eight columns">
+      <h3>Searching through ebay</h3>
+      <div class="row">
+        <div class="six columns">
+			<div class="panel" onmouseover="displayCommentary(1);" onmouseout="closeCommentary()">
+				<h5>PHP form processing... </h5>
+				<p>Below, please enter a search string for ebay. 
+				I am going to take that search string with a php 
+				form (not ajax) processor, and present it to the ebay search engine. 
+				ebay will return an XML file, which I will parse, and 
+				present. Have fun!</p>
+				<p>If you enter your name and email address, I will
+				send you an e-mail (whoopee doo!), store your search 
+				query in my database, and you will see your name and
+				email listed below. You can then delete them.</p>
+			
+				<!-- <p><font color=red>The following form is down for maintenence. My apologies for any inconveniences.</font></p> -->
+				<form action='./php/listFindings.php' method='post'> 
+					<input type='text' size=37 placeholder='What would you like to search for?' name='query' value=''>
+					<input type='text' size=37 placeholder='Enter your name' name='name' value=''>
+					<input type='text' size=37 placeholder='and your email address' name='email' value=''>
+					<input class='small button' type='submit' value='Let me find it for you!'> 
+				</form>
+			</div>
+        </div>
+        <div class="six columns">
+          <div class="panel">
+			<h5>Commentary</h5>
+            <p class="emkbox" id="commentary"></p>
+          </div>
+        </div>
+      </div>
+  <div class="row">
+    <div class="twelve columns">
+      <h3>These pictures have been resized with gimp...</h3>
+      <div id="featured">
+        <img src="img/jslack2.jpg" alt="juggling on a slack rope" onmouseover="commentOn(1);" onmouseout="commentOff();">
+        <img src="img/sailing2.jpg" alt="sailing singlehanded on a trapeze" onmouseover="commentOn(2);" onmouseout="commentOff();">
+        <img src="img/racecars2.jpg" alt="car racing" onmouseover="commentOn(3);" onmouseout="commentOff();">
+      </div>
+	  <div id="_commentOn">&nbsp;
+	  </div>
+    </div>
+  </div>
+
+   <div class="row panel" id="lastRow">
+   <div id="TabsComment"></div>
+      <h3>More PHP, more AJAX (stronger than dirt...)</h3>
+      <dl class="tabs">
+        <dd class="active"><a href="#simple1">mySQL database stuff</a></dd>
+        <dd onmouseover="tabsComment(2);" onmouseout="tabsCommentOut();"><a href="#simple2">List of people</a></dd>
+        <dd onmouseover="tabsComment(3);" onmouseout="tabsCommentOut();"><a href="#simple3">List of ebay Queries</a></dd>
+      </dl>
+
+      <ul class="tabs-content">
+        <li class="active" id="simple1Tab">
+		
+			<div class="panel">
+			<form action='php/insertPerson.php' method='post'> 
+			<table>
+				<tr>
+					<td>This php/mysql application is collecting names and e-mail addresses</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<input type='text' size=37 placeholder='Name' name='name' value=''>
+						<input type='text' size=37 placeholder='Email' name='email' value=''>
+					</td>
+					<td onmouseover="tabsComment(1);" onmouseout="tabsCommentOut();">
+						<input class='small button' type='submit' value='I can save that!'>
+					</td>
+				</tr>
+			</table>
+			</form>
+			</div>
+		</li>
+        <li id="simple2Tab">
+			<div class="panel">
+			<table>
+				<tr>
+					<td id="AJAXTarget"  width=75%>Here is a list of people who we have in our database....</td>
+					<td><div  id="AJAXComment01"><i>No form - this is an AJAX call... </i></div></td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<div onclick="fireAJAX('AJAXTarget', '//www.efraimmkrug.com/php/getPeople.php')">Click to <i>refresh</i></div>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</li>
+		
+        <li id="simple3Tab">
+			<div class="panel">
+			<table>
+				<tr>
+					<td id="AJAXTarget2" width=75%>Here is a list of ebay queries made by - your choice!</td>
+					<td><div  id="AJAXComment02"><i>You can delete this user by clicking the name</i></div></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			</div>
+		</li>
+      </ul>
+      
+      
+      <!--
+      <h3>Buttons</h3>
+
+      <div class="row">
+        <div class="six columns">
+          <p><a href="#" class="small button">Small Button</a></p>
+          <p><a href="#" class="button">Medium Button</a></p>
+          <p><a href="#" class="large button">Large Button</a></p>
+        </div>
+        <div class="six columns">
+          <p><a href="#" class="small alert button">Small Alert Button</a></p>
+          <p><a href="#" class="success button">Medium Success Button</a></p>
+          <p><a href="#" class="large secondary button">Large Secondary Button</a></p>
+        </div>
+	
+      </div>
+     --> 
+    </div>
+	</div>
+	
+    <div class="four columns">
+      <h4>Some other PHP thoughts</h4>
+      <p>When PHP was started, it was started as a 'user scripting' language. A very cool idea... 
+	  except that 'users' were often not 'programmers' and as they build functions they called
+	  them just about every name possible. That is - nothing is named according to the same 
+	  convention. That can be quite weird... Imagine, I am working with strings, and I want
+	  to find the last string position of a substring in another string... so I use 'strrpos',
+	  which may stand for 'string rear position'. Right. If that doesn't prove my point... try
+	  this - 'preg_match' an underscore just to make problems and what does a match have to
+	  do with pregnancy?!? Weird! Oh, I was supposed to know that was Php REGex MATCH? Hmmm.</p>
+	  <p>So I wrote an object to make my string manipulation life a little easier. </p>
+	  <p>I also wrote one for file manipulation and yet another for date manipulation.</p>
+	  <p>And here is how it goes.</p>
+	  <h4>Downloads: free object files that I like</h4>
+	  <a href="./php/dLoad.php?FNAME=ObjectSTRING.php" target="_blank"><h6>Strings</h6></a>
+	  <a href="./php/dLoad.php?FNAME=ObjectDATE.php" target="_blank"><h6>Dates</h6></a>
+	  <a href="./php/dLoad.php?FNAME=ObjectFILE.php" target="_blank"><h6>Files</h6></a>
+	  <a href="./php/dLoad.php?FNAME=dLoad.php" target="_blank"><h6>DownLoader</h6></a>
+	  <a href="./php/dLoad.php?FNAME=DB2.php" target="_blank"><h6>mysql Database Object file</h6></a>
+	  <!--
+      <h4>Other Resources</h4>
+      <p>Once you've exhausted the fun in this document, you should check out:</p>
+      <ul class="disc">
+        <li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
+        <li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
+        <li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
+      </ul>
+	  -->
+	  <div id="commentOn">&nbsp;
+	  </div>
+    </div>
+ </div>
+  
+<!--  
+  <div class="row">
+    <div class="twelve columns">
+      <h3>Reveal</h3>
+      <p><a href="#" data-reveal-id="exampleModal" class="button">Example modal</a></p>
+    </div>
+  </div>
+  
+  <div id="exampleModal" class="reveal-modal">
+    <h2>This is a modal.</h2>
+    <p>
+      Reveal makes these very easy to summon and dismiss. The close button is simple an anchor with a unicode 
+      character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will 
+      also dismiss it.
+    </p>
+    <a class="close-reveal-modal">×</a>
+  </div>
+-->  
+  
+  <!-- Included JS Files (Uncompressed) -->
+  <!--
+  <script src="javascripts/jquery.js"></script><script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script><script src="javascripts/jquery.foundation.forms.js"></script><script src="javascripts/jquery.foundation.reveal.js"></script><script src="javascripts/jquery.foundation.orbit.js"></script><script src="javascripts/jquery.foundation.navigation.js"></script><script src="javascripts/jquery.foundation.buttons.js"></script><script src="javascripts/jquery.foundation.tabs.js"></script><script src="javascripts/jquery.foundation.tooltips.js"></script><script src="javascripts/jquery.foundation.accordion.js"></script><script src="javascripts/jquery.placeholder.js"></script><script src="javascripts/jquery.foundation.alerts.js"></script><script src="javascripts/jquery.foundation.topbar.js"></script><script src="javascripts/jquery.foundation.joyride.js"></script><script src="javascripts/jquery.foundation.clearing.js"></script><script src="javascripts/jquery.foundation.magellan.js"></script>
+  -->
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="js/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="js/app.js"></script>
+
+  
+    <script>
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+    </script> 
+  
+</body>
+</html>

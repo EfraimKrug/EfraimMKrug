@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Efraim M Krug</title>
+<link rel="stylesheet" href="css/foundation.css" />
+<script src="js/vendor/jquery.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</head>
+<style>
+/* circular picture */
+.circular {
+	position: relative;
+	width: 299px;
+	height: 299px;
+	border-radius: 150px;
+	left: 0px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url('./img/javascript.jpg'); 
+	}
+
+#jsDemoText {
+	position: relative;
+	height: 249px;
+	width: 229px;
+	background-color: green; 
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Times New Roman, times, sans;
+	padding: 5px;
+	}
+	
+#jsAddressText {
+	/* holds the location of user text */
+	position: absolute;
+	height: 0px;
+	width: 0px;
+	top:-1000px;
+	left:-1000px;
+	}
+	
+#messageBox {
+	position: absolute;
+	left: 859px;
+	top:  76px;
+	color: grey;
+	size: 10px;
+	height: 138px;
+	width: 138px;
+	border: 0px solid red;
+	padding: 10px;
+	}
+	
+#HebrewName {
+	position: relative;
+	left: 409px;
+	}
+	
+.right, .right p {
+	font-family : Ezra Sil, Ezra Sil SR, CODE2000, Times New Roman, times, serif;
+	direction : rtl;
+}
+
+div.right, .right p {
+	font-size : x-large;
+	margin : 0px auto;
+}
+div.right {
+	padding : 6px;
+}
+
+	
+.left, .left p {
+	font-family : Ezra Sil, Ezra Sil SR, CODE2000, Times New Roman, times, serif;
+	direction : rtl;
+}
+
+div.left, .left p {
+	font-size : x-large;
+	margin : 0px auto;
+}
+div.left {
+	padding : 6px;
+}
+
+</style>
+<script>
+$(document).ready(function(){
+	getLocation();
+	});
+</script>
+<script> 
+function getLocation()
+  {
+  var options = null;
+  var patternCheckChrome = /Chrome/i;
+  var browserChrome = navigator.userAgent.match(patternCheckChrome);
+	if (navigator.geolocation)
+	{
+	if (browserChrome) //set this var looking for Chrome un user-agent header
+        options={enableHighAccuracy: false, maximumAge: 15000, timeout: 30000};
+	else
+        options={maximumAge:Infinity, timeout:0};
+		
+	navigator.geolocation.getCurrentPosition(getPlace,errorPosition,options);	
+	};
+ }
+ 
+function showPosition(position)
+  {
+  getPlace(position);
+  }
+  
+function getPlace(pos)
+{
+	geocoder = new google.maps.Geocoder();
+	lat = parseFloat(pos.coords.latitude).toFixed(7);
+	lon = parseFloat(pos.coords.longitude).toFixed(7);
+	var latlng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);	
+	geocoder.geocode({'latLng': latlng}, function(results, status) {
+		var result = results[0];
+		document.getElementById("jsAddressText").innerHTML = result.formatted_address;
+		});
+}
+
+function errorPosition()
+{
+	document.getElementById("jsAddressText").innerHTML = "No geo coordinates available";
+}
+</script>
+<script>
+/**
+ * Box and Circle
+ **/
+var demoName = "javascript";
+
+function showMessage(msg, pos){		
+	var x = document.getElementById("messageBox");
+	if(pos == 'left'){
+		x.style.left = "-128px";
+		x.style.height = "79px";
+		}
+	else {
+		x.style.left = "859px";
+		x.style.height = "138px";
+		}
+	x.innerHTML = msg;
+	x.style.border = "2px solid red";
+	}
+function hideMessage(){
+	var x = document.getElementById("messageBox");
+	x.innerHTML = "";
+	x.height = "0px";
+	x.width = "0px";
+	x.style.border = "0px";
+	}
+	
+function doCSSWork(version){
+	if(version == 1){
+		var x = document.getElementById("jsDemoText");
+		x.innerHTML = "So this is obvious... I am just writing text via the 'innerHTML' attribute. I will use alert boxes to pause activity while I explain what I am doing";
+		alert("Here we go...");
+		x.style.border = "4px solid red";
+		alert("Let's add a red border");
+		alert("and we will scootch all the text inside away from the edges");
+		x.style.padding = "30px";
+		alert("Background color to yellow");
+		x.style.background = "yellow";
+		x.style.color = "purple";
+		x.innerHTML = "<div id='cssDemo1'><div id='cssDemo2'>What happens if I put a box inside a box? This is in the inside box.</div>This is in the outside box.</div>";
+		var outsideBox = document.getElementById("cssDemo1");
+		var insideBox = document.getElementById("cssDemo2");
+		outsideBox.style.border = "4px solid green";
+		insideBox.style.border = "2px solid red";
+		alert("There are our boxes... what about some space between? Changing colors...");
+		insideBox.style.padding = "5px";
+		insideBox.style.background = "green";
+		insideBox.style.color = "red";		
+		outsideBox.style.padding = "10px";
+		outsideBox.style.background = "blue";
+		alert("And changing fonts/text color/shadowing one... - just to add some distiction...");
+		outsideBox.style.color = "white";
+		outsideBox.style.fontFamily = "Cambria, Arial, Arimo";
+		insideBox.style.fontFamily = "Comic Sans MS, Tahoma, David";
+		insideBox.style.fontStyle = "italic"
+		insideBox.style.textShadow = "2px 2px 2px #000";
+		}
+	}
+	
+function jsDemo(){
+	if(demoName == "javascript"){
+		document.getElementById("demoButton").style.backgroundImage = "url('img/php.jpg')";
+		document.getElementById("demoButton").style.left = "53px";
+		demoName = "php";
+		window.open('shvatim.html');
+	} else if(demoName == "php"){
+		document.getElementById("demoButton").style.backgroundImage = "url('img/css.jpg')";
+		document.getElementById("demoButton").style.left = "79px";
+		demoName = "css";
+		window.open('ebay2.html');
+	}  else if(demoName == "css"){
+		doCSSWork(1);
+		document.getElementById("demoButton").style.backgroundImage = "url('img/writing.jpg')";
+		document.getElementById("demoButton").style.left = "105px";
+		demoName = "css";
+		window.open('ebay2.html');
+	}
+}
+function filljsDemoText(){
+	if(demoName == "javascript"){
+		var x = document.getElementById("jsDemoText");
+		x.innerHTML = "Click the circle: Go to a little game that I wrote. <br /><br />This game is all written in native JavaScript.<br /><br />There are array manipulations, and comparisons. Sometimes I delete elements from the array and then I move everything to make the array contiguous again. I move html divisions around.<br /><br />Take a look, play, enjoy!";
+	} else if(demoName == "php"){
+		var x = document.getElementById("jsDemoText");
+		var txtAddress = document.getElementById("jsAddressText");
+		x.style.padding = "30px";
+		x.innerHTML = "When you click on the circle, behold, lo, a box and a button to search ebay (via api call))!";
+		x.innerHTML += "<br/><br/>NO WAY! You're at <br/><br/><font color=red>" + txtAddress.innerHTML + "!?</font><br/><br/>That is so WILD!";
+		showMessage("Yeah, I know... I'm accessing googles geoCoordinate api... impressive?<br/><br/> But wait! There's more!", "right");
+	} else if(demoName == "css"){
+		var x = document.getElementById("jsDemoText");
+		x.style.padding = "30px";
+		x.innerHTML = "When you click on the circle, I am going to present some css stuff... hmmm.";
+	}
+}
+function emptyjsDemoText(){
+	var x = document.getElementById("jsDemoText");
+	x.innerHTML = "";
+	if(demoName == "php") hideMessage();
+}
+
+</script>
+<body>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<div id="messageBox"></div>
+			<h2>
+			<div id="EnglishName" class="left" 
+					onmouseout="hideMessage()" 
+					onmouseover="showMessage('Click my name to hide it - via jQuery', 'left')">Efraim M Krug</div>
+			<div id="HebrewName" class="right" 
+					onclick="showMessage('These message boxes are being done in native javascript - changing css settings', 'right')" 
+					onmouseover="showMessage('Hebrew text going from right to left on the same line as English - going from left to right! <br><i>click</i>', 'right')" 
+					onmouseout="hideMessage()"> אפרים מרדכי קרוג</div></h2>
+			<hr />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-8 columns">
+			<h3><div id="clickhere"></div></h3>
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="panel">
+						<div class="circular" id="demoButton" onclick="jsDemo();" 
+												onmouseover="filljsDemoText();" 
+												onmouseout="emptyjsDemoText();">
+												</div>
+						<div id="jsDemoText"></div>
+						<div id="jsAddressText"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  
+  <script src="js/foundation.min.js"></script>  
+  <script>
+    //$(document).foundation();
+  </script>
+<script>
+$( "#EnglishName" ).click(function() {
+	$( "#EnglishName" ).toggle( "slow", function() {
+		$("<div id=\"NameReturn\"><font size=-1>Click here to bring my name back... </font></div>").appendTo( "#clickhere" );
+	});
+});
+$( "#clickhere" ).click(function() {
+	$( "#EnglishName" ).toggle( "slow", function() {
+		$("#clickhere").replaceWith("A few projects I am working on");
+	});
+});
+
+</script>
+
+</body>
+</html>
+
