@@ -194,21 +194,26 @@ function doCSSWork(version){
 	
 function jsDemo(){
 	if(demoName == "javascript"){
-		document.getElementById("demoButton").style.backgroundImage = "url('img/php.jpg')";
+		document.getElementById("demoButton").style.backgroundImage = "url('img/backbone.jpg')";
 		document.getElementById("demoButton").style.left = "53px";
-		demoName = "php";
+		demoName = "backbone";
 		window.open('shvatim.html');
+	} else if(demoName == "backbone"){
+		document.getElementById("demoButton").style.backgroundImage = "url('img/php.jpg')";
+		document.getElementById("demoButton").style.left = "79px";
+		demoName = "php";
+		window.open('//localhost/RebSam01/index.html');
 	} else if(demoName == "php"){
 		document.getElementById("demoButton").style.backgroundImage = "url('img/css.jpg')";
-		document.getElementById("demoButton").style.left = "79px";
+		document.getElementById("demoButton").style.left = "105px";
 		demoName = "css";
 		window.open('ebay2.html');
 	}  else if(demoName == "css"){
 		doCSSWork(1);
 		document.getElementById("demoButton").style.backgroundImage = "url('img/writing.jpg')";
-		document.getElementById("demoButton").style.left = "105px";
-		demoName = "css";
-		window.open('ebay2.html');
+		document.getElementById("demoButton").style.left = "217px";
+		document.getElementById("demoButton").style.top = "95px";
+		demoName = "writing";
 	}
 }
 function filljsDemoText(){
