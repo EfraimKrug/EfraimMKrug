@@ -1,0 +1,48 @@
+<html>
+<head>
+<style>
+.story {
+	font-size:14px;
+	font-family:"comic sans ms";
+	width: 565px;
+	}
+</style>
+</head>
+<body>
+<h4>Pointers, Addresses and Arrays</h4>
+	<p class="story">An exploration in PERL... I can't seem to make sense out of all the verbiage about these issues, so I am going to find out what actually happens when you do whatever it is that you do... and from there we will come up with answers and findings!</p>
+<h4>Scalars - the simplicity of simplicity</h4>
+	<p class="story">A scalar normally holds a simple value - like a number, or a word. Through this exploration I will be using DWIMPERL as a compiler in MS Windows 7 - so I will open that up and begin.</p>
+	<p class="story">In PERL I can use a scalar if there is a "$" in front of the word - for example I have declared "$s = 6;" and then I can "print $s;" and the program prints "6" to the monitor. So far so good!</p>
+	<p class="story">Now, it turns out that if I put a "$" in front of each of my "$s" references,  that works the exact same way. It seems then, that $$s is the name of a scalar that can be assigned the value of 6 and printed out to the monitor. </p>
+	<p class="story">What happens if I take away one of the $-signs from one reference? </p>
+	<p class="story">If I assign $$s = 6 and print $s, I print out an address! If I reverse the double/single $ and assign the $s = 6 and print $$s then I print a blank line. So for now, I will assume that placing a "$" in front of a variable name means that the name is an address, and "$" means "Look at that address".</p>
+	<p class="story">In my first example then, $s means " 's' is the address of the variable called '$s' !" When I later assign $$s, that means "'$s' is the address of the variable called '$$s', and when I print $s - I print the address. In the first example then, $s should print the value, and 's' should print the address. </p>
+	<p class="story">Alas, however, if I try to print 's' - PERL just complains of a syntax error. Evidently 's' by itself blows up. </p>
+<h4>Arrays - the second stroke!</h4>
+	<p class="story">An array is declared by using a "@" instead of a "$". Parentheses also need to be used somewhere - or maybe that is just a way of initializing... let's try!</p>
+	<p class="story">First of all, if I use @ instead of $ as in "@s = 6" and "print @s" - then the "@" works exactly like a "$". It worked so much the same I thought maybe I could replace one with the other - but no, they both have to be either "$" or "@" to work that way. And as long as we are there, "%" works the same way.</p>
+	<p class="story">Now let's start playing with addresses.</p>
+	<p class="story">If I declare an array using parentheses - @s = (6,7,8) - and I print the array using just the name "print @s;" - the whole array prints out. If I only print the first element in the array - @s[0] - it only prints out the "6". Fine. </p>
+	<p class="story">If I print "$s[0]" - again, only the "6" prints. Evidently, the "$" says "Give me the variable sitting in the address "s[0]". </p>
+	<p class="story">On the other hand, if I assign the variable $s = (6, 7, 8) and then print $s, only the 8 prints. If I assign @s = (6, 7, 8) and print $s, a blank line prints! The other way around also prints a blank line. </p>
+<h4>What about Hashes?</h4>
+	<p class="story">So far it really seems straight forward. "$" points at scalars - if you keep them straight everyone is happy. "@" points at arrays - if you keep them straight everyone is happy. But what about this "%"?</p>
+	<p class="story">The "%" points at a hash. But that only seems relevant at initialization time! Otherwise, it seems that "$" or "@" will work just as well, and "%" does not work at all!</p>
+	<p class="story">A hash is an array of pairs - key => value pairs. The key implies the value - that means that the hash name referencing the key gets the value. So I can declare a hash as:  "%s = ( "this" => 6, "that" => 7, "other" => 8);"</p>
+	<p class="story">Then I can reference one of the pairs with: $s {'that'}; Weird, huh? And I can reference the exact same thing like this: @s {'that'}; But if I try to reference it like this: %s {'that'}; - the program will not compile! And if I reference both $s and @s, I assure you they will both work and produce the same result. Also, with the same logic, if I print both of these references with a "\" in front, I simply print addresses!</p>
+	<p class="story">Maybe it is a lot simpler to say that a hash is a special array - so an array can be used to hold a hash, and then another hash name can be assigned by equated it with the array! I know, right? So a hash is called %something and it is referenced with the "$" beginning of the same something. But it can also be stored as an array - although "$" is scalar and "@" is a list and "%" is a hash and $a, @a, %a have nothing in common!</p>
+	<p class="story">So $a {somekey} has nothing in common with $a, but everything in common with %a! As my daughter would say, "Whatever!".</p>
+
+<h4>In Summary So Far</h4>
+	<p class="story">There are scalars. Their names start with "$". Then there are lists whose names start with "@". A particular member of a list can be referenced with an index - for example "@a[5] " is a reference to the sixth position on the list. Then there is the hash. Its name starts with a "%" unless it is being referenced by a particular keyed position. Then the reference is written with a "$". So, for hash %s a position may be referenced with $s{somekey}.</p>
+<h4>Pointers... Referencing and Dereferencing</h4></p>
+	<p class="story">Sometimes you may way to pass a thing - a scalar, or a list - or even a hash or function, and sometimes you just want to leave it where it is and pass a pointer to it. A pointer is like a phone number. If I want you to talk to Billy, I can present you with Billy, in person, or I can give you his phone number. If you have the phone number (and, of course, assuming it is correct), you can get in touch with him - that is you know how to find him.</p>
+	<p class="story">That is the same with a pointer to a specific variable. If I give you a pointer - you can dereference it and get to the actual variable. Sounds cool, huh?</p>
+	<p class="story">In PERL you can get an address by prefacing a variable name with a "\". If I have a scalar called "$s" and I want the address, I just make it "\$s". And since that address is just a fancy number, I can assign that value to another scalar. So I can write "$address_holder = \$s;". Now, if I reference "$address_holder", I just get that fancy address. If I want the assigned value inside the original scalar variable - then I have to call it "$$address_holder" - with the extra "$" sign. </p>
+	<p class="story">You can also create a pointer to an array by assigning a scalar to the "\" followed by the array name. For example "$address_holder = \@array_name;". And then you can dereference it by using the "@" in front, as in "@$address_ holder"; This can be used with indexes - as in @$address_holder[5]. And it turns out that hashes work the same way - $address_holder = \%hash is dereferenced by "%$address_holder".</p>
+</body>
+</html>
+
+	
+	

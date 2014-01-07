@@ -1,0 +1,114 @@
+/* circular picture */
+#header {
+	height: 56px;
+	}
+	
+.circular {
+	position: relative;
+	width: 299px;
+	height: 299px;
+	border-radius: 150px;
+	left: 0px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url('../img/javascript.jpg'); 
+	}
+
+#jsDemoText {
+	position: relative;
+	height: 309px;
+	width: 329px;
+	background-color: green; 
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Times New Roman, times, sans;
+	padding: 35px;
+	}
+
+#CSSExplanations{
+	position: absolute;
+	top: 99px;
+	left: 2417px;
+	/*
+	height: 479px;
+	width: 229px;
+	*/
+	height: 0px;
+	width: 0px;
+
+	background-color: lime-green; 
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Times New Roman, times, sans;
+	border-radius: 50px;
+	border: 0px solid black;
+	padding: 15px;
+	}
+
+#jsAddressText {
+	/* holds the location of user text */
+	position: absolute;
+	height: 0px;
+	width: 0px;
+	top:-1000px;
+	left:-1000px;
+	}
+	
+#messageBox {
+	position: absolute;
+	left: 859px;
+	top:  176px;
+	color: grey;
+	size: 10px;
+	height: 138px;
+	width: 138px;
+	border: 0px solid red;
+	padding: 10px;
+	}
+	
+#menuBlock {
+	position: absolute;
+	left: 759px;
+	top:  176px;
+	color: grey;
+	size: 10px;
+	height: 38px;
+	width: 138px;
+	border: 0px solid red;
+	padding: 10px;
+	}
+	
+#HebrewName {
+	position: relative;
+	left: 409px;
+	}
+	
+.right, .right p {
+	font-family : Ezra Sil, Ezra Sil SR, CODE2000, Times New Roman, times, serif;
+	direction : rtl;
+}
+
+div.right, .right p {
+	font-size : x-large;
+	margin : 0px auto;
+}
+div.right {
+	padding : 6px;
+}
+
+	
+.left, .left p {
+	font-family : Ezra Sil, Ezra Sil SR, CODE2000, Times New Roman, times, serif;
+	direction : rtl;
+}
+
+div.left, .left p {
+	font-size : x-large;
+	margin : 0px auto;
+}
+div.left {
+	padding : 6px;
+}
+
