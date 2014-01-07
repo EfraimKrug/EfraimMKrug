@@ -16,6 +16,7 @@
 
 #jsDemoText {
 	position: relative;
+	top: 0px;
 	height: 309px;
 	width: 329px;
 	background-color: green; 

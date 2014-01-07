@@ -206,9 +206,28 @@ function showOff(step){
 		}
 }
 
+function closeUp(){
+	var jsDemoText = document.getElementById("jsDemoText");
+	
+	clearMenu();
+	hideMessage();
+	emptyjsDemoText();
+
+	jsDemoText.style.height = "309px";
+	jsDemoText.style.width = "329px";
+	jsDemoText.style.top = "0px";
+	jsDemoText.style.left = "0px";
+	jsDemoText.style.background-color = "green"; 
+	jsDemoText.style.color = "black";
+	jsDemoText.style.font-size = "15px";
+	jsDemoText.style.font-weight = "bold";
+	jsDemoText.style.font-family = "Times New Roman, times, sans";
+	jsDemoText.style.padding = "35px";
+	jsDemoText.style.position = "relative";
+
+	}
+	
 function getCoolStuff(){
-//	clearMenu();
-//	hideMessage();
 	var innerHTML;
 	var CSSExplanations = document.getElementById("CSSExplanations");
 	CSSExplanations.style.height = "665px";
@@ -240,6 +259,12 @@ function getCoolStuff(){
 	innerHTML += "<p>PHP/Ajax form</p>";
 	innerHTML += "<p>mysql SQL insert/delete</p>";
 	innerHTML += "<p>mysql SQL database create/build/populate</p>";
+	innerHTML += "</div>";
+	innerHTML += "</div>";
+	innerHTML += "<div class='row'>";
+	
+	innerHTML += "<div class='four columns'>";
+	innerHTML += "<p><div onclick='closeUp();'>Close it up</div></p>";
 	innerHTML += "</div>";
 	innerHTML += "</div>";
 
